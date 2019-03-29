@@ -1,6 +1,7 @@
 package com.stevenw.demo.service.impl;
 
 import com.stevenw.demo.dao.UserInfo;
+import com.stevenw.demo.dao.UserInfoView;
 import com.stevenw.demo.mapper.UserMapper;
 import com.stevenw.demo.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
