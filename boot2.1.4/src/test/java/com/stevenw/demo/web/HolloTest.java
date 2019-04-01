@@ -1,7 +1,6 @@
-package com.stevenw.demo;
+package com.stevenw.demo.web;
 
 import com.stevenw.demo.thread.TestVolatile;
-import com.stevenw.demo.web.HelloController;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,6 +14,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import static org.hamcrest.Matchers.equalTo;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 /**
  * @author stevenw
  * @date 2019/3/22

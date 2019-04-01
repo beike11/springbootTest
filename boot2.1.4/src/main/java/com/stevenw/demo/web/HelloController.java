@@ -26,6 +26,7 @@ public class HelloController {
     @GetMapping("/hello")
     @JSON(type = UserInfo.class,filter = "pwd,name")
     public List<UserInfo> index(){
+        System.err.println(userInfoService);
         List<UserInfo> users = userInfoService.getAllUser();
         System.err.println(users.size());
         return users;
