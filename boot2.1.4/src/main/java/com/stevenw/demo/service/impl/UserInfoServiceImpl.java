@@ -6,8 +6,11 @@ import com.stevenw.demo.mapper.UserMapper;
 import com.stevenw.demo.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.servlet.handler.UserRoleAuthorizationInterceptor;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @author stevenw
@@ -18,8 +21,22 @@ public class UserInfoServiceImpl implements UserInfoService{
     @Autowired
     private UserMapper userMapper;
 
+    public static AtomicInteger num1;
+
     @Override
     public List<UserInfo> getAllUser() {
         return userMapper.getAll();
+    }
+
+    @Override
+    @Transactional
+    public int addUser(UserInfo userInfo) {
+        Integer sort = userMapper.getMaxSort();
+        if(null == num1){
+            num1 = new AtomicInteger(sort);
+        }
+        System.err.println(num1);
+        userInfo.setSort(num1.incrementAndGet());
+        return userMapper.addUser(userInfo);
     }
 }

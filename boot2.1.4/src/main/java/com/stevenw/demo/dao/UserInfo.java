@@ -12,6 +12,7 @@ public class UserInfo {
     private String account;
     private String name;
     private String pwd;
+    private Integer sort;
 
     public Integer getUid() {
         return uid;
@@ -44,4 +45,13 @@ public class UserInfo {
     public void setPwd(String pwd) {
         this.pwd = pwd;
     }
+
+    public Integer getSort() {
+        return sort;
+    }
+
+    public void setSort(Integer sort) {
+        this.sort = sort;
+    }
+
 }

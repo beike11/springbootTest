@@ -13,4 +13,5 @@ import java.util.List;
 
 public interface UserInfoService {
     List<UserInfo> getAllUser();
+    int addUser(UserInfo userInfo);
 }
