@@ -31,7 +31,7 @@ public class UserInfoServiceImpl implements UserInfoService{
     @Override
     @Transactional
     public int addUser(UserInfo userInfo) {
-        Integer sort = userMapper.getMaxSort();
+        Integer sort = (null == userMapper.getMaxSort())?0:userMapper.getMaxSort();
         if(null == num1){
             num1 = new AtomicInteger(sort);
         }

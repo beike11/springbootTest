@@ -18,7 +18,7 @@ public interface UserMapper {
     })
     List<UserInfo> getAll();
 
-    @Insert("insert into user_info (account,name,pwd,sort) values(#{userInfo.account},#{userInfo.name},#{userInfo.pwd},#{userInfo.sort})")
+    @Insert("insert into user_info (account,name,pwd,sort,entry_time) values(#{userInfo.account},#{userInfo.name},#{userInfo.pwd},#{userInfo.sort},now())")
     int addUser(@Param("userInfo") UserInfo userInfo);
 
     @Select("SELECT MAX(sort) from user_info")

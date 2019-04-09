@@ -16,7 +16,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 @Service
 public class TestVolatile {
-    static CountDownLatch countDownLatch = new CountDownLatch(100);
+    static CountDownLatch countDownLatch = new CountDownLatch(10000);
     @Autowired
     private UserInfoService userInfoService;
 
@@ -42,14 +42,16 @@ public class TestVolatile {
     }
 
     public void addUser() throws InterruptedException{
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 10000; i++) {
             new Thread(){
                 @Override
                 public void run() {
                     UserInfo userInfo = new UserInfo();
                     userInfo.setAccount("a");
-                    userInfo.setName("a1");
-                    userInfo.setPwd("pwd");
+                    int random1  = (int)(Math.random()*11);
+                    int random2  = (int)((Math.random()+1)*1000);
+                    userInfo.setName("a"+random1);
+                    userInfo.setPwd("pwd"+random2);
                     userInfoService.addUser(userInfo);
 //                    System.err.println(userInfo.getAccount());
                     countDownLatch.countDown();
@@ -59,4 +61,6 @@ public class TestVolatile {
         }
         countDownLatch.await();
     }
+
+
 }
