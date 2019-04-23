@@ -5,6 +5,7 @@ import com.stevenw.demo.dao.UserInfoView;
 import com.stevenw.demo.mapper.UserMapper;
 import com.stevenw.demo.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.servlet.handler.UserRoleAuthorizationInterceptor;
@@ -24,7 +25,9 @@ public class UserInfoServiceImpl implements UserInfoService{
     public static AtomicInteger num1;
 
     @Override
+    @Cacheable(value = "allUser")
     public List<UserInfo> getAllUser() {
+        System.err.println("载入缓存");
         return userMapper.getAll();
     }
 

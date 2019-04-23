@@ -3,11 +3,13 @@ package com.stevenw.demo.dao;
 import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import java.io.Serializable;
+
 /**
  * @author stevenw
  * @date 2019/3/25
  */
-public class UserInfo {
+public class UserInfo implements Serializable{
     private Integer uid;
     private String account;
     private String name;
