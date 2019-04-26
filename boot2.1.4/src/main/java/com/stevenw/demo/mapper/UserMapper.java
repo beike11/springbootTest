@@ -23,4 +23,13 @@ public interface UserMapper {
 
     @Select("SELECT MAX(sort) from user_info")
     Integer getMaxSort();
+    @Update("update user_info set pwd=#{pwd} where uid=#{uid}")
+    int updatePwd(@Param("uid") Integer uid, @Param("pwd") String pwd);
+
+    @Select("select * from user_info where uid = #{uid}")
+    @Results({
+            @Result(property = "uid",column = "uid"),
+            @Result(property = "pwd",column = "pwd")
+    })
+    UserInfo getUserInfo(@Param("uid") Integer uid);
 }

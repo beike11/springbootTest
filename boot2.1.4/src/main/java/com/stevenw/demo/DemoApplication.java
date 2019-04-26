@@ -8,10 +8,12 @@ import org.springframework.boot.autoconfigure.web.embedded.EmbeddedWebServerFact
 import org.springframework.boot.web.embedded.tomcat.TomcatEmbeddedWebappClassLoader;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 @MapperScan("com.stevenw.demo.mapper")
+@EnableEurekaClient
 public class DemoApplication {
 
 	public static void main(String[] args) {
