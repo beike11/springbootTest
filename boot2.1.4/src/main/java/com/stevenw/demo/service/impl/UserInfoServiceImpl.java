@@ -1,17 +1,15 @@
 package com.stevenw.demo.service.impl;
 
 import com.stevenw.demo.dao.UserInfo;
-import com.stevenw.demo.dao.UserInfoView;
+import com.stevenw.demo.mapper.UserInfoMapper;
 import com.stevenw.demo.mapper.UserMapper;
 import com.stevenw.demo.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cache.annotation.Caching;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.servlet.handler.UserRoleAuthorizationInterceptor;
 
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -24,6 +22,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class UserInfoServiceImpl implements UserInfoService{
     @Autowired
     private UserMapper userMapper;
+    @Autowired
+    private UserInfoMapper userInfoMapper;
+
 
     public static AtomicInteger num1;
 
@@ -67,7 +68,8 @@ public class UserInfoServiceImpl implements UserInfoService{
     @Cacheable(value = "user",key = "#id")
     public UserInfo getUserInfo(Integer id) {
         System.err.println("获取user的id为: "+id);
-        UserInfo userInfo = userMapper.getUserInfo(id);
+        UserInfo userInfo = userInfoMapper.getUserInfo(id);
         return userInfo;
     }
+
 }

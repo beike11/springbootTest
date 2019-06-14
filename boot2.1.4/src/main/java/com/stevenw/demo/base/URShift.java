@@ -56,7 +56,7 @@ public class URShift {
      * @param requestMethod
      * @throws ProtocolException
      */
-    private static void setHttpUrlConnection(HttpURLConnection conn, String requestMethod) throws ProtocolException {
+    public static void setHttpUrlConnection(HttpURLConnection conn, String requestMethod) throws ProtocolException {
         conn.setRequestMethod(requestMethod);
         conn.setRequestProperty("accept", "*/*");
         conn.setRequestProperty("Accept-Language", "zh-CN");
@@ -74,7 +74,7 @@ public class URShift {
      * @return
      * @throws IOException
      */
-    private static String readResponseContent(InputStream in) throws IOException {
+    public static String readResponseContent(InputStream in) throws IOException {
         Reader reader = null;
         StringBuilder content = new StringBuilder();
         try {

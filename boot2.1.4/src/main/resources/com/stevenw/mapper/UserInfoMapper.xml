@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.stevenw.demo.mapper.UserInfoMapper">
+    <resultMap id="baseResultMap" type="com.stevenw.demo.dao.UserInfo">
+        <id column="uid" property="uid"></id>
+        <result column="name" property="name"></result>
+        <result column="account" property="account"></result>
+        <result column="pwd" property="pwd"></result>
+        <result column="sort" property="sort"></result>
+    </resultMap>
+    <select id="getUserInfo" resultMap="baseResultMap">
+        select * from user_info where uid = #{uid}
+    </select>
+</mapper>
